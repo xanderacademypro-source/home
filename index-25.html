@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="facebook-domain-verification" content="h7gw6obwsjxu5i9kw7o26n4ryb60q0" />
+<title>Xander.sg · Trading en vivo y clase gratis</title>
+<meta name="description" content="Opera en vivo con Xander en YouTube y regístrate a la clase gratis: La nueva dinámica del mercado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000000;
+    --ink:#FFFFFF;
+    --muted:rgba(255,255,255,.55);
+    --line:rgba(255,255,255,.22);
+    --card:rgba(255,255,255,.03);
+    --green:#0AA757;
+    --green-hi:#2BD47A;
+    --red:#FF3B3B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);
+    display:flex;justify-content:center;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  #stars{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+
+  .page{position:relative;z-index:1;width:100%;max-width:480px;min-height:100dvh;display:flex;flex-direction:column;align-items:center}
+
+  /* ---- foto ---- */
+  .photo{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;line-height:0}
+  .photo img{
+    width:100%;height:100%;object-fit:cover;object-position:52% 12%;display:block;
+    filter:grayscale(1) contrast(1.12) brightness(1.04);
+  }
+  .photo::after{
+    content:'';position:absolute;left:0;right:0;bottom:0;height:45%;
+    background:linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.75) 60%, var(--bg));
+  }
+
+  /* ---- nombre ---- */
+  .brand{
+    position:relative;margin-top:-38px;display:flex;align-items:center;gap:8px;
+    font-weight:800;font-size:22px;letter-spacing:.22em;padding-left:.22em;
+    animation:rise .7s .1s both;
+  }
+  .brand svg{width:20px;height:20px;flex-shrink:0}
+  .tagline{margin-top:8px;font-size:13.5px;color:var(--muted);animation:rise .7s .18s both}
+
+  /* ---- links ---- */
+  .links{width:100%;padding:28px 24px 0;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+  .link{
+    position:relative;display:flex;align-items:center;gap:14px;
+    padding:13px 18px;border:1px solid var(--line);border-radius:12px;background:var(--card);
+    color:var(--ink);text-decoration:none;
+    transition:transform .25s ease, border-color .25s ease, background .25s ease;
+    animation:rise .7s both;
+  }
+  .link:nth-child(1){animation-delay:.26s}
+  .link:nth-child(2){animation-delay:.34s}
+  .link:nth-child(3){animation-delay:.42s}
+  .link .t{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:600;line-height:1.15;letter-spacing:-.01em}
+  .link .s{margin-top:3px;font-size:12.5px;color:var(--muted)}
+  .link .arrow{width:22px;height:22px;flex-shrink:0;opacity:0;width:0;margin-right:-14px;transition:opacity .25s, width .25s, margin .25s}
+  .link:hover,.link:focus-visible{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.06);outline:none}
+  .link:hover .arrow,.link:focus-visible .arrow{opacity:1;width:22px;margin-right:0}
+
+  /* destacado: clase gratis */
+  .link.featured{
+    border-color:rgba(43,212,122,.55);
+    background:linear-gradient(180deg, rgba(10,167,87,.14), rgba(10,167,87,.04));
+    transform:translateX(-4px);overflow:hidden;
+  }
+  .link.featured .arrow{opacity:1;width:22px;margin-right:0;color:var(--green-hi)}
+  .link.featured::after{
+    content:'';position:absolute;bottom:0;left:-40%;width:40%;height:2px;
+    background:linear-gradient(90deg, transparent, var(--green-hi), transparent);
+    animation:sweep 3.2s ease-in-out 1.2s infinite;
+  }
+  .link.featured:hover,.link.featured:focus-visible{border-color:var(--green-hi);background:linear-gradient(180deg, rgba(10,167,87,.22), rgba(10,167,87,.06))}
+  .tag-free{
+    font-size:10.5px;font-weight:700;letter-spacing:.12em;color:#fff;background:var(--green);
+    padding:3px 7px;border-radius:5px;
+  }
+
+  /* en vivo */
+  .live{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--red)}
+  .live i{width:6px;height:6px;border-radius:50%;background:var(--red);box-shadow:0 0 8px rgba(255,59,59,.8);animation:pulse 1.4s ease-in-out infinite}
+
+  footer{margin-top:auto;padding:48px 24px 28px;font-size:11.5px;color:rgba(255,255,255,.35);text-align:center}
+
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .link.featured{animation-name:riseFeat}
+  @keyframes riseFeat{from{opacity:0;transform:translate(-4px,10px)}to{opacity:1;transform:translateX(-4px)}}
+  @keyframes sweep{0%{left:-40%}60%,100%{left:110%}}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+  @media (min-width:481px){ .photo{aspect-ratio:1/.92} }
+  @media (prefers-reduced-motion:reduce){
+    *,*::after{animation:none!important;transition:none!important}
+    .link.featured{transform:translateX(-4px)}
+  }
+</style>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<main class="page">
+  <div class="photo">
+    <img src="assets/home-xander.jpg" alt="Xander">
+  </div>
+
+  <h1 class="brand">XANDER.SG
+    <svg viewBox="0 0 24 24" fill="none" aria-label="Verificado"><circle cx="12" cy="12" r="10" fill="#0AA757"/><path d="M7.5 12.2l3 3 6-6.2" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </h1>
+  <p class="tagline">+6 años operando los mercados</p>
+
+  <nav class="links">
+    <a class="link" href="https://mentoria.xanderacademypro.com" target="_blank" rel="noopener">
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <span>
+        <span class="t">Mentoría 1 a 1</span>
+        <span class="s" style="display:block">Postulación requerida</span>
+      </span>
+    </a>
+
+    <!-- Landing de la clase (repo aparte con CNAME clasegratis.xanderacademypro.com) -->
+    <a class="link featured" href="https://clasegratis.xanderacademypro.com" target="_blank" rel="noopener">
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <span>
+        <span class="t">Clase gratis <span class="tag-free">7 OCT</span></span>
+        <span class="s" style="display:block">La nueva dinámica del mercado · En vivo</span>
+      </span>
+    </a>
+
+    <a class="link" href="https://www.youtube.com/@xanderacademy" target="_blank" rel="noopener">
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <span>
+        <span class="t">YouTube <span class="live"><i></i>EN VIVO</span></span>
+        <span class="s" style="display:block">Opero en vivo en el canal</span>
+      </span>
+    </a>
+  </nav>
+
+  <footer>© Xander.sg</footer>
+</main>
+
+<script>
+  // Fondo de estrellas sutil (mismo efecto del home de referencia)
+  (function(){
+    const c = document.getElementById('stars'), ctx = c.getContext('2d');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let w, h, stars = [];
+    function size(){
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = innerWidth; h = innerHeight;
+      c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+      const n = Math.round(w * h / 9000);
+      stars = Array.from({length:n}, ()=>({
+        x: Math.random()*w, y: Math.random()*h,
+        r: Math.random()*1.1 + .2, a: Math.random()*.5 + .1,
+        s: Math.random()*.15 + .03, p: Math.random()*Math.PI*2
+      }));
+    }
+    function draw(t){
+      ctx.clearRect(0,0,w,h);
+      for(const s of stars){
+        const tw = reduce ? 1 : (.6 + .4*Math.sin(t/900 + s.p));
+        ctx.globalAlpha = s.a * tw;
+        ctx.fillStyle = '#fff';
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI*2); ctx.fill();
+        if(!reduce){ s.y -= s.s; if(s.y < -2){ s.y = h + 2; s.x = Math.random()*w; } }
+      }
+      if(!reduce) requestAnimationFrame(draw);
+    }
+    addEventListener('resize', size);
+    size(); requestAnimationFrame(draw);
+  })();
+</script>
+</body>
+</html>
